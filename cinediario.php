@@ -1,3 +1,8 @@
+<?php 
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -67,7 +72,7 @@
                 <label for="genero">Genero</label>
                 <select name="genero" id="genero">
                     <option value="default" disabled selected>Selecione uma Opção</option>
-                    <option value="film">Filme</option>
+                    <option value="filme">Filme</option>
                     <option value="serie">Serie</option>
                     <option value="anime">Anime</option>
                 </select>
@@ -101,11 +106,11 @@
             <?php 
                 include('conexao.php');
                 //Coletar dados do formulário
-                $nome = $_POST['nome'];
-                $genero = $_POST['genero'];
-                $classificacao = $_POST['classificacao'];
-                $resumo = $_POST['resumo'];
-                $recomendacao = $_POST['recomendacao'];
+                $nome = $_POST['nome'] ?? null;
+                $genero = $_POST['genero'] ?? null;
+                $classificacao = $_POST['classificacao'] ?? null;
+                $resumo = $_POST['resumo'] ?? null ;
+                $recomendacao = $_POST['recomendacao'] ?? null;
 
                 $sql = "INSERT INTO cinediario.ConteudoAssistido(nome,genero,classificacao,resumo,recomendacao) values ('$nome','$genero','$classificacao','$resumo','$recomendacao')";
                 $resultado = mysqli_query($mysqli, $sql);
