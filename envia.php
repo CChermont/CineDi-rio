@@ -7,19 +7,21 @@
 </head>
 <body>
     <?php 
-        $conexao = mysqli_connect("localhost","root","","");
+        $conexao = mysqli_connect("localhost","root","","cinediario");
         //Checar conexao
         if(!$conexao){
             echo"Não conectado";
         }
         echo"Conectado ao banco >>>>>>";
 
-        $nome = $_POST['name'];
-        $email = $_POST['email'];
-        $assunto = $_POST['subject'];
-        $mensagem = $_POST['message'];
+        //Coletar dados do formulário
+        $nome = $_POST['nome'];
+        $genero = $_POST['genero'];
+        $classificacao = $_POST['classificacao'];
+        $resumo = $_POST['resumo'];
+        $recomendacao = $_POST['recomendacao'];
 
-        $sql = "INSERT INTO cadastro.dados(nome,email,assunto,mensagem) values ('$nome','$email','$assunto','$mensagem')";
+        $sql = "INSERT INTO cinediario.ConteudoAssistido(nome,genero,classificacao,resumo,recomendacao) values ('$nome','$genero','$classificacao','$resumo','$recomendacao')";
         $resultado = mysqli_query($conexao, $sql);
         echo">> MENSAGEM ENVIADA COM SUCESSO";
         
