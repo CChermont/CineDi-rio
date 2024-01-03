@@ -58,7 +58,7 @@
         <p>Cadastre Filmes, Series e Animes que você já assitiu</p>
     </header>
     <section>
-        <form action="envia.php" method="post">
+        <form action="" method="post">
             <div>
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" required>
@@ -88,7 +88,7 @@
                 <textarea name="resumo" id="resumo"></textarea>
             </div>
             <div>
-                <label for="recomendacao">Recomenção</label>
+                <label for="recomendacao">Recomendação</label>
                 <select name="recomendacao" id="recomendacao">
                     <option value="default" disabled selected>Selecione uma Opção</option>
                     <option value="sim">Sim</option>
@@ -98,6 +98,19 @@
             <div>
                 <input type="submit" value="Cadastrar">
             </div>
+            <?php 
+                include('conexao.php');
+                //Coletar dados do formulário
+                $nome = $_POST['nome'];
+                $genero = $_POST['genero'];
+                $classificacao = $_POST['classificacao'];
+                $resumo = $_POST['resumo'];
+                $recomendacao = $_POST['recomendacao'];
+
+                $sql = "INSERT INTO cinediario.ConteudoAssistido(nome,genero,classificacao,resumo,recomendacao) values ('$nome','$genero','$classificacao','$resumo','$recomendacao')";
+                $resultado = mysqli_query($mysqli, $sql);
+            
+            ?>
         </form>
     </section>
 </body>
